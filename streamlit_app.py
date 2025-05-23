@@ -39,39 +39,6 @@ if uploaded_file is not None:
     # Carregar dados
     df = pd.read_csv(uploaded_file)
 
-        ## Exibir primeiras linhas do DataFrame
-    st.markdown("### 📋 Primeiras 5 Linhas do Dataset")
-    st.dataframe(df.head())
-    
-    # Informações gerais do dataset
-    st.markdown("### 📊 Informações Gerais do Dataset")
-    buffer = io.StringIO()
-    df.info(buf=buffer)
-    s = buffer.getvalue()
-    st.text(s)
-    
-    # Quantidade de linhas e colunas
-    st.markdown("### 🔢 Número de Linhas e Colunas")
-    st.write(f"Linhas: {df.shape[0]} | Colunas: {df.shape[1]}")
-    
-    # Identificar colunas numéricas e categóricas
-    numerical_cols = df.select_dtypes(include=np.number).columns.tolist()
-    categorical_cols = df.select_dtypes(include='object').columns.tolist()
-    
-    st.markdown("### 📌 Variáveis Categóricas")
-    st.write(categorical_cols)
-    
-    st.markdown("### 📐 Variáveis Numéricas")
-    st.write(numerical_cols)
-    
-    # Valores nulos
-    st.markdown("### 🧹 Valores Nulos por Coluna")
-    st.write(df.isnull().sum())
-    
-    # Estatísticas descritivas
-    st.markdown("### 📈 Estatísticas Descritivas (Colunas Numéricas)")
-    st.dataframe(df.describe().round(2))
-
     # Classificar risco de queimada
     def classificar_risco(freq):
         if freq > 7:
@@ -194,7 +161,48 @@ if uploaded_file is not None:
 
     with tab2:
         st.subheader("🌍 Análise Geral das 200 Comunidades")
+
+
+            st.subheader("🌍 Análise Geral das 200 Comunidades")
+    
+        # Exibir primeiras linhas do DataFrame
+        st.markdown("### 📋 Primeiras 5 Linhas do Dataset")
+        st.dataframe(df.head())
+        
+        # Informações gerais do dataset
+        st.markdown("### 📊 Informações Gerais do Dataset")
+        buffer = io.StringIO()
+        df.info(buf=buffer)
+        s = buffer.getvalue()
+        st.text(s)
+        
+        # Quantidade de linhas e colunas
+        st.markdown("### 🔢 Número de Linhas e Colunas")
+        st.write(f"Linhas: {df.shape[0]} | Colunas: {df.shape[1]}")
+        
+        # Identificar colunas numéricas e categóricas
+        numerical_cols = df.select_dtypes(include=np.number).columns.tolist()
+        categorical_cols = df.select_dtypes(include='object').columns.tolist()
+        
+        st.markdown("### 📌 Variáveis Categóricas")
+        st.write(categorical_cols)
+        
+        st.markdown("### 📐 Variáveis Numéricas")
+        st.write(numerical_cols)
+        
+        # Valores nulos
+        st.markdown("### 🧹 Valores Nulos por Coluna")
+        st.write(df.isnull().sum())
+        
+        # Estatísticas descritivas
+        st.markdown("### 📈 Estatísticas Descritivas (Colunas Numéricas)")
+        st.dataframe(df.describe().round(2))
+        
+        # Restante do conteúdo da tab2...
         st.markdown("### 🔍 Padrões Ambientais entre Todas as Comunidades")
+
+
+        
 
         # Histograma geral da frequência de queimadas
         st.markdown("#### 🔥 Frequência de Queimadas nas 200 Comunidades")
