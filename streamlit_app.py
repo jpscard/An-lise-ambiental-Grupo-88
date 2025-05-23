@@ -34,9 +34,8 @@ st.set_page_config(page_title="Dashboard Desafio Ambiental - I²A²", layout='wi
 
 # Carregar e mostrar o logo do grupo no topo
 
-st.image(logo, width=200)  # Ajuste a largura conforme necessário
 # TELA INICIAL DO GRUPO
-st.markdown(")
+
 st.markdown("### Alunos:")
 st.markdown("""
 - João Paulo da Silva Cardoso – celular: +55 91 98273-6292  
