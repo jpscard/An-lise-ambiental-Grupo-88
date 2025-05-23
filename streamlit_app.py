@@ -26,21 +26,17 @@ st.markdown(f"""
 </style>
 """, unsafe_allow_html=True)
 
-st.image("caminho/para/a/imagem.png")
+st.image("logo_grupo88.png")
 
-st.markdown("<h1 style='text-align: center;'>Título Centralizado</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>## Grupo 88 – Projeto Avaliativo I²A²</h1>", unsafe_allow_html=True)
 
-
-
-
-st.set_page_config(page_title="Dashboard Ambiental - I²A²", layout='wide')
+st.set_page_config(page_title="Dashboard Desafio Ambiental - I²A²", layout='wide')
 
 # Carregar e mostrar o logo do grupo no topo
-logo = Image.open("logo_grupo88.png")
 
 st.image(logo, width=200)  # Ajuste a largura conforme necessário
 # TELA INICIAL DO GRUPO
-st.markdown("## Grupo 88 – Projeto Avaliativo I²A²")
+st.markdown(")
 st.markdown("### Alunos:")
 st.markdown("""
 - João Paulo da Silva Cardoso – celular: +55 91 98273-6292  
