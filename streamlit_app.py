@@ -22,7 +22,7 @@ logo = Image.open("logo_grupo88.png")
 
 st.image(logo, width=200)  # Ajuste a largura conforme necessário
 # TELA INICIAL DO GRUPO
-st.markdown("## 👥 Grupo 88 – Projeto Avaliativo I²A²")
+st.markdown("## Grupo 88 – Projeto Avaliativo I²A²")
 st.markdown("### Alunos:")
 st.markdown("""
 - João Paulo da Silva Cardoso – celular: +55 91 98273-6292  
