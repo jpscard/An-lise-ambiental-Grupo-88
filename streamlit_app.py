@@ -15,6 +15,24 @@ import streamlit as st
 from PIL import Image
 
 
+st.markdown(f"""
+<style>
+.stImage {{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}}
+</style>
+""", unsafe_allow_html=True)
+
+st.image("caminho/para/a/imagem.png")
+
+st.markdown("<h1 style='text-align: center;'>Título Centralizado</h1>", unsafe_allow_html=True)
+
+
+
+
 st.set_page_config(page_title="Dashboard Ambiental - I²A²", layout='wide')
 
 # Carregar e mostrar o logo do grupo no topo
