@@ -18,7 +18,7 @@ from PIL import Image
 st.set_page_config(page_title="Dashboard Ambiental - I²A²", layout='wide')
 
 # Carregar e mostrar o logo do grupo no topo
-logo = Image.open("/app/src/logo_grupo88.png")
+logo = Image.open("logo_grupo88.png")
 
 st.image(logo, width=200)  # Ajuste a largura conforme necessário
 # TELA INICIAL DO GRUPO
