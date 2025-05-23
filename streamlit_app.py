@@ -24,7 +24,7 @@ def center_element(element, width=50):
 
 # Carregar logo e mostrar centralizado
 logo = Image.open("logo_grupo88.png")
-center_element(f"<div style='text-align:center;'><img src='data:image/png;base64,{image_to_base64(logo)}' width='200'></div>")
+center_element(f"<div style='text-align:center;'><img src='Analise_Ambiental-Grupo-88/logo_grupo88.png;base64,{image_to_base64(logo)}' width='200'></div>")
 
 # Título centralizado
 center_element("<h1 style='text-align:center;'>Dashboard Ambiental - Projeto I²A²</h1>")
