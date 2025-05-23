@@ -14,20 +14,20 @@ from sklearn.preprocessing import StandardScaler
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(page_title="Dashboard Ambiental - I²A²", layout='wide')
+st.set_page_config(page_title="Dashboard Desafio 2 - I²A²", layout='wide')
 
 # Carregar e mostrar o logo do grupo no topo
 logo = Image.open("logo_grupo88.png")
 
-st.image(logo, width=50)  # Ajuste a largura conforme necessário
+st.image(logo, width=100)  # Ajuste a largura conforme necessário
 # TELA INICIAL DO GRUPO
-st.markdown("## 👥 Grupo 88 – Projeto Avaliativo I²A²")
+st.markdown("## Grupo 88 – Projeto Avaliativo I²A²")
 st.markdown("### Alunos:")
 st.markdown("""
-- João Paulo da Silva Cardoso – celular: +55 91 98273-6292
+- João Paulo da Silva Cardoso – jpscardoso@ufpa.br
 - Lucas Maia – celular: +55 91 98063-5989
-- Adrianny Lima – celular: +55 91 98119-6260
-- Denis de Castro Silva – celular: +55 91 98164-9172
+- Adrianny Lima – celular: adrianny.lima3@gmail.com
+- Denis de Castro Silva – denisdecastrosilva@gmail.com
 - Renato Moraes da Silva – celular: +55 91 99318-1086
 - Arthur Melo – celular: +55 91 98325-2564
 """)
