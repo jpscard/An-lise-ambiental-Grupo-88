@@ -162,9 +162,6 @@ if uploaded_file is not None:
     with tab2:
         st.subheader("🌍 Análise Geral das 200 Comunidades")
 
-
-            st.subheader("🌍 Análise Geral das 200 Comunidades")
-    
         # Exibir primeiras linhas do DataFrame
         st.markdown("### 📋 Primeiras 5 Linhas do Dataset")
         st.dataframe(df.head())
@@ -199,10 +196,7 @@ if uploaded_file is not None:
         st.dataframe(df.describe().round(2))
         
         # Restante do conteúdo da tab2...
-        st.markdown("### 🔍 Padrões Ambientais entre Todas as Comunidades")
-
-
-        
+        st.markdown("### 🔍 Padrões Ambientais entre Todas as Comunidades")        
 
         # Histograma geral da frequência de queimadas
         st.markdown("#### 🔥 Frequência de Queimadas nas 200 Comunidades")
