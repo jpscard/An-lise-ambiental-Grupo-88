@@ -15,37 +15,26 @@ import streamlit as st
 from PIL import Image
 
 
-st.markdown(f"""
-<style>
-.stImage {{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}}
-</style>
-""", unsafe_allow_html=True)
-
-st.image("logo_grupo88.png")
-
-st.markdown("<h1 style='text-align: center;'>## Grupo 88 – Projeto Avaliativo I²A²</h1>", unsafe_allow_html=True)
-
-st.set_page_config(page_title="Dashboard Desafio Ambiental - I²A²", layout='wide')
+st.set_page_config(page_title="Dashboard Ambiental - I²A²", layout='wide')
 
 # Carregar e mostrar o logo do grupo no topo
+logo = Image.open("logo_grupo88.png")
 
+st.image(logo, width=200)  # Ajuste a largura conforme necessário
 # TELA INICIAL DO GRUPO
-
+st.markdown("## 👥 Grupo 88 – Projeto Avaliativo I²A²")
 st.markdown("### Alunos:")
 st.markdown("""
-- João Paulo da Silva Cardoso – celular: +55 91 98273-6292  
-- Lucas Maia – celular: +55 91 98063-5989  
-- Adrianny Lima – celular: +55 91 98119-6260  
-- Denis de Castro Silva – celular: +55 91 98164-9172  
-- Renato Moraes da Silva – celular: +55 91 99318-1086  
+- João Paulo da Silva Cardoso – celular: +55 91 98273-6292
+- Lucas Maia – celular: +55 91 98063-5989
+- Adrianny Lima – celular: +55 91 98119-6260
+- Denis de Castro Silva – celular: +55 91 98164-9172
+- Renato Moraes da Silva – celular: +55 91 99318-1086
 - Arthur Melo – celular: +55 91 98325-2564
 """)
-
+st.markdown("---")
+st.markdown("### ⚠️ Faça o upload do dataset para continuar:")
+uploaded_file = st.file_uploader("Upload do arquivo CSV", type=["csv"])
 #st.markdown("---")
 #st.markdown("### ⚠️ Faça o upload do dataset para continuar:")
 uploaded_file = st.file_uploader("Carregar base de dados CSV", type=["csv"])
