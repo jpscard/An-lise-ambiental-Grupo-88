@@ -14,13 +14,12 @@ from sklearn.preprocessing import StandardScaler
 import streamlit as st
 from PIL import Image
 
-
 st.set_page_config(page_title="Dashboard Ambiental - I²A²", layout='wide')
 
 # Carregar e mostrar o logo do grupo no topo
 logo = Image.open("logo_grupo88.png")
 
-st.image(logo, width=200)  # Ajuste a largura conforme necessário
+st.image(logo, width=50)  # Ajuste a largura conforme necessário
 # TELA INICIAL DO GRUPO
 st.markdown("## 👥 Grupo 88 – Projeto Avaliativo I²A²")
 st.markdown("### Alunos:")
@@ -35,9 +34,6 @@ st.markdown("""
 st.markdown("---")
 st.markdown("### ⚠️ Faça o upload do dataset para continuar:")
 uploaded_file = st.file_uploader("Upload do arquivo CSV", type=["csv"])
-#st.markdown("---")
-#st.markdown("### ⚠️ Faça o upload do dataset para continuar:")
-uploaded_file = st.file_uploader("Carregar base de dados CSV", type=["csv"])
       
 if uploaded_file is not None:
 
