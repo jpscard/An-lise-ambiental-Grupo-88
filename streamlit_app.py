@@ -12,6 +12,7 @@ import plotly.graph_objects as go
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from PIL import Image
+import io
 
 st.set_page_config(page_title="Dashboard Desafio 2 - I²A²", layout='wide')
 
