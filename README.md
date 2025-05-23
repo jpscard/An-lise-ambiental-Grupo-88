@@ -1,6 +1,7 @@
 # 🌱 Projeto Avaliativo I²A² – Grupo 88
 ## Análise Ambiental com Inteligência Artificial
 
+ACESSE https://grupo88.streamlit.app/
 ---
 
 ## 👥 Integrantes do Grupo
