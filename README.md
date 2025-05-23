@@ -1,1 +1,4 @@
-# An-lise-ambiental-Grupo-88
+## Análise-ambiental-Grupo-88
+
+### ***Após análise exploratória do dataset fornecido pela I²A², observamos que comunidades com menor cobertura vegetal tendem a apresentar maior incidência de queimadas, independentemente da renda ou acesso a serviços básicos. Utilizamos técnicas de visualização e IA para agrupar comunidades com perfis similhantes e priorizar intervenções. O dashboard permite filtrar por município e comunidade, comparando seus indicadores com a média local. Além disso, incluímos uma seção dedicada à análise geral das 200 comunidades, com histogramas, boxplots e clusterização com K-Means, revelando padrões territoriais importantes. Mesmo sem correlações estatísticas fortes, a leitura crítica dos dados ajuda a identificar vulnerabilidades e apoiar decisões com base em evidências locais. A proposta reforça o uso da IA como ferramenta de apoio à análise ambiental, promovendo justiça socioambiental e cidadania consciente.***
+    
