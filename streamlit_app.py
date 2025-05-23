@@ -39,7 +39,7 @@ if uploaded_file is not None:
     # Carregar dados
     df = pd.read_csv(uploaded_file)
 
-    # Exibir primeiras linhas do DataFrame
+        ## Exibir primeiras linhas do DataFrame
     st.markdown("### 📋 Primeiras 5 Linhas do Dataset")
     st.dataframe(df.head())
     
@@ -71,22 +71,6 @@ if uploaded_file is not None:
     # Estatísticas descritivas
     st.markdown("### 📈 Estatísticas Descritivas (Colunas Numéricas)")
     st.dataframe(df.describe().round(2))
-
-    # Identificar colunas numéricas e categóricas
-    numerical_cols = df.select_dtypes(include=np.number).columns.tolist()
-    categorical_cols = df.select_dtypes(include='object').columns.tolist()
-
-    print("\nVariáveis Categóricas:")
-    print(categorical_cols)
-
-    print("\nVariáveis Numéricas:")
-    print(numerical_cols)
-
-    print("\nVerificando valores nulos:")
-    print(df.isnull().sum())
-
-    print("\nEstatísticas descritivas para colunas numéricas:")
-    print(df.describe().round(2))
 
     # Classificar risco de queimada
     def classificar_risco(freq):
