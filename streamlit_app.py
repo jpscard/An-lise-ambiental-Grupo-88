@@ -11,15 +11,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-import streamlit as st
 from PIL import Image
 
 st.set_page_config(page_title="Dashboard Desafio 2 - I²A²", layout='wide')
 
 # Carregar e mostrar o logo do grupo no topo
 logo = Image.open("logo_grupo88.png")
-
 st.image(logo, width=100)  # Ajuste a largura conforme necessário
+
 # TELA INICIAL DO GRUPO
 st.markdown("## Grupo 88 – Projeto Avaliativo I²A²")
 st.markdown("### Alunos:")
@@ -34,12 +33,37 @@ st.markdown("""
 st.markdown("---")
 st.markdown("### ⚠️ Faça o upload do dataset para continuar:")
 uploaded_file = st.file_uploader("Upload do arquivo CSV", type=["csv"])
-      
-if uploaded_file is not None:
 
+if uploaded_file is not None:
     # Carregar dados
     df = pd.read_csv(uploaded_file)
-    
+
+    # Mostrar informações iniciais no console (não na interface)
+    print("\nPrimeiras 5 linhas do DataFrame:")
+    print(df.head())
+
+    print("\nInformações gerais do dataset:")
+    print(df.info())
+
+    print(f'Quantidade de linhas: {df.shape[0]}')
+    print(f'Quantidade de colunas: {df.shape[1]}')
+
+    # Identificar colunas numéricas e categóricas
+    numerical_cols = df.select_dtypes(include=np.number).columns.tolist()
+    categorical_cols = df.select_dtypes(include='object').columns.tolist()
+
+    print("\nVariáveis Categóricas:")
+    print(categorical_cols)
+
+    print("\nVariáveis Numéricas:")
+    print(numerical_cols)
+
+    print("\nVerificando valores nulos:")
+    print(df.isnull().sum())
+
+    print("\nEstatísticas descritivas para colunas numéricas:")
+    print(df.describe().round(2))
+
     # Classificar risco de queimada
     def classificar_risco(freq):
         if freq > 7:
@@ -53,7 +77,7 @@ if uploaded_file is not None:
 
     # Abas para navegação
     tab1, tab2 = st.tabs(["📍 Análise Individual", "🌍 Análise Geral das 200 Comunidades"])
-
+    
     with tab1:
         # Sidebar - Filtros
         st.sidebar.header("🔍 Filtros")
@@ -71,14 +95,12 @@ if uploaded_file is not None:
         # Seção 1: Informações da Comunidade
         st.subheader(f"📍 Informações da Comunidade: {comunidade_selecionada}")
         col1, col2 = st.columns(2)
-
         with col1:
             st.markdown(f"**Município:** {df_comunidade['Município'].values[0]}")
             st.markdown(f"**Estado:** {df_comunidade['Estado'].values[0]}")
             st.markdown(f"**Presença de Escola:** {df_comunidade['Presença de Escola (Sim/Não)'].values[0]}")
             st.markdown(f"**Unidade de Saúde:** {df_comunidade['Presença de Unidade de Saúde (Sim/Não)'].values[0]}")
             st.markdown(f"**Risco Ambiental:** {df_comunidade['Risco de Queimada'].values[0]}")
-
         with col2:
             st.markdown(f"**Cobertura Vegetal (%):** {df_comunidade['Cobertura Vegetal (%)'].values[0]}")
             st.markdown(f"**Queimadas/Ano:** {df_comunidade['Frequência de Queimadas (ano)'].values[0]}")
@@ -89,14 +111,12 @@ if uploaded_file is not None:
         # Calcular médias do município
         medias_municipio = df_municipio[['Cobertura Vegetal (%)', 'Frequência de Queimadas (ano)',
                                         'Renda Média Mensal (R$)', 'Distância de Área Urbana (km)']].mean().round(2)
-
         # Dados da comunidade selecionada
         dados_comunidade = df_comunidade[['Cobertura Vegetal (%)', 'Frequência de Queimadas (ano)',
                                         'Renda Média Mensal (R$)', 'Distância de Área Urbana (km)']].iloc[0].round(2)
 
         # Gráficos comparativos
         st.subheader("🧮 Comparação com a Média do Município")
-
         for var in ['Cobertura Vegetal (%)', 'Frequência de Queimadas (ano)', 'Renda Média Mensal (R$)', 'Distância de Área Urbana (km)']:
             fig = go.Figure()
             fig.add_trace(go.Bar(
@@ -111,7 +131,6 @@ if uploaded_file is not None:
                 name=f'Média de {municipio_selecionado}',
                 marker_color='lightgreen'
             ))
-
             fig.update_layout(
                 title=f"{var} - {comunidade_selecionada} vs Média do Município",
                 yaxis_title=var,
@@ -149,7 +168,6 @@ if uploaded_file is not None:
         st.subheader("🧠 Hipótese Ambiental Sugerida")
         st.markdown("""
         > **Comunidades com menor cobertura vegetal parecem ter maior frequência de queimadas**, independentemente do nível de renda ou acesso à água potável.
-        
         Essa tendência pode estar associada à pressão antrópica, expansão agrícola ou atividades ilegais como extração de madeira e abertura de pastagens.
         """)
 
@@ -157,9 +175,7 @@ if uploaded_file is not None:
         st.subheader("🤖 Recomendação de Uso da Inteligência Artificial")
         st.markdown("""
         Uma técnica valiosa de Inteligência Artificial aplicada foi a **clusterização com K-Means**, usada para agrupar comunidades com características similares. Isso permitiu identificar grupos de comunidades com comportamentos semelhantes e priorizar políticas públicas localizadas.
-
         Também é possível usar modelos simples de **classificação com Árvore de Decisão**, treinando um modelo com base na cobertura vegetal, proximidade urbana e renda, para prever quais comunidades estão mais propensas a ter alta frequência de queimadas.
-
         Mesmo sem correlações estatísticas fortes, essas técnicas ajudam a organizar os dados e extrair conhecimento útil para educação ambiental e planejamento territorial.
         """)
 
@@ -201,15 +217,13 @@ if uploaded_file is not None:
         st.subheader("#### 🤖 Agrupamento com IA – K-Means")
         cols_cluster = ['Cobertura Vegetal (%)', 'Frequência de Queimadas (ano)', 'Distância de Área Urbana (km)', 'Índice de Desmatamento (%)']
         X = df[cols_cluster]
-
         # Padronizar os dados
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
-
         # Aplicar K-Means
         kmeans = KMeans(n_clusters=4, random_state=42)
-        kmeans.fit(X_scaled)  # Aqui está a correção
-        df['Cluster'] = kmeans.labels_  # Agora funciona!
+        kmeans.fit(X_scaled)
+        df['Cluster'] = kmeans.labels_
 
         # Scatter Plot colorido por cluster
         fig_cluster = px.scatter(
@@ -230,7 +244,6 @@ if uploaded_file is not None:
 
         # Mapa Simulado por Risco Ambiental
         st.markdown("#### 🗺️ Localização Simulada por Risco Ambiental")
-
         municipios_coords = {
             "SÃO DOMINGOS DO CAPIM": (-1.4556, -48.4902),
             "SALINÓPOLIS": (-1.3765, -46.7442),
@@ -241,10 +254,8 @@ if uploaded_file is not None:
             "SANTARÉM": (-2.4396, -54.7306),
             "BELÉM": (-1.4556, -48.4902),
         }
-
         df['Latitude'] = df['Município'].map(lambda m: municipios_coords.get(m, (np.nan, np.nan))[0])
         df['Longitude'] = df['Município'].map(lambda m: municipios_coords.get(m, (np.nan, np.nan))[1])
-
         fig_mapa_all = px.scatter_mapbox(
             df.dropna(subset=['Latitude', 'Longitude']),
             lat='Latitude',
@@ -266,13 +277,11 @@ if uploaded_file is not None:
         # Serviços Básicos por Município
         # Presença de Escola por Município
         st.markdown("### 👩‍🏫 Presença de Escolas por Município")
-
         # Contagem de 'Sim/Não' por município
         escola_por_municipio = df.groupby('Município')['Presença de Escola (Sim/Não)'].value_counts().unstack(fill_value=0)
         escola_por_municipio['Total'] = escola_por_municipio['Sim'] + escola_por_municipio['Não']
         escola_por_municipio['% Escolas'] = (escola_por_municipio['Sim'] / escola_por_municipio['Total']) * 100
         escola_por_municipio = escola_por_municipio[['Sim', 'Não', '% Escolas']].round(2)
-
         # Gráfico de barras empilhadas – Escolas
         fig_escola = px.bar(
             escola_por_municipio.reset_index(),
@@ -283,20 +292,16 @@ if uploaded_file is not None:
             barmode='group'
         )
         st.plotly_chart(fig_escola, use_container_width=True)
-
         # Tabela de escolas
         st.markdown("#### 📋 Tabela: Presença de Escolas")
         st.dataframe(escola_por_municipio[['Sim', 'Não', '% Escolas']])
 
-
         # Presença de Unidade de Saúde por Município
         st.markdown("### 🏥 Presença de Unidades de Saúde por Município")
-
         saude_por_municipio = df.groupby('Município')['Presença de Unidade de Saúde (Sim/Não)'].value_counts().unstack(fill_value=0)
         saude_por_municipio['Total'] = saude_por_municipio['Sim'] + saude_por_municipio['Não']
         saude_por_municipio['% Saúde'] = (saude_por_municipio['Sim'] / saude_por_municipio['Total']) * 100
         saude_por_municipio = saude_por_municipio[['Sim', 'Não', '% Saúde']].round(2)
-
         # Gráfico de barras – Saúde
         fig_saude = px.bar(
             saude_por_municipio.reset_index(),
@@ -307,7 +312,6 @@ if uploaded_file is not None:
             barmode='group'
         )
         st.plotly_chart(fig_saude, use_container_width=True)
-
         # Tabela de saúde
         st.markdown("#### 📋 Tabela: Presença de Unidade de Saúde")
         st.dataframe(saude_por_municipio[['Sim', 'Não', '% Saúde']])
@@ -317,6 +321,5 @@ if uploaded_file is not None:
     st.markdown("""
     Após análise exploratória do dataset fornecido pela I²A², observamos que comunidades com menor cobertura vegetal tendem a apresentar maior incidência de queimadas, independentemente da renda ou acesso a serviços básicos. Utilizamos técnicas de visualização e IA para agrupar comunidades com perfis similhantes e priorizar intervenções. O dashboard permite filtrar por município e comunidade, comparando seus indicadores com a média local. Além disso, incluímos uma seção dedicada à análise geral das 200 comunidades, com histogramas, boxplots e clusterização com K-Means, revelando padrões territoriais importantes. Mesmo sem correlações estatísticas fortes, a leitura crítica dos dados ajuda a identificar vulnerabilidades e apoiar decisões com base em evidências locais. A proposta reforça o uso da IA como ferramenta de apoio à análise ambiental, promovendo justiça socioambiental e cidadania consciente.
     """)
-
 else:
     st.info("📂 Aguarde o upload do dataset para iniciar a análise.")
