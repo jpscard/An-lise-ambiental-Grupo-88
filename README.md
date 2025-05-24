@@ -6,11 +6,11 @@ ACESSE https://grupo88.streamlit.app/
 
 ## 👥 Integrantes do Grupo
 - João Paulo da Silva Cardoso – jpscardoso@ufpa.br
-- Lucas Maia – celular: +55 91 98063-5989
-- Adrianny Lima – celular: adrianny.lima3@gmail.com
+- Lucas Maia – Lucasmaia.p97@gmail.com
+- Adrianny Lima – adrianny.lima3@gmail.com
 - Denis de Castro Silva – denisdecastrosilva@gmail.com
-- Renato Moraes da Silva – celular: +55 91 99318-1086
-- Arthur Melo – celular: +55 91 98325-2564
+- Renato Moraes da Silva – renaeelie@gmail.com
+- Arthur Melo – arthurep.melo@gmail.com
 ---
 
 ## 📊 Hipótese sobre o Problema Ambiental
